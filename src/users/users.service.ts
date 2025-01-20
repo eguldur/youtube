@@ -4,10 +4,6 @@ import { Injectable } from '@nestjs/common';
 export class UsersService {
   private users: string[] = [];
 
-  constructor() {
-    this.users = ['ahmet', 'mehmet', 'ali', 'veli'];
-  }
-
   getUsers() {
     return this.users;
   }
