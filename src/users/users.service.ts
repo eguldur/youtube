@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common';
+import { CreateUserDto } from './dto/create-user.input';
+import { UpdateUserDto } from './dto/uptade-user.input';
 
 @Injectable()
 export class UsersService {
-  private users: string[] = [];
+  private users: CreateUserDto[] = [];
 
   getUsers() {
     return this.users;
@@ -12,13 +14,13 @@ export class UsersService {
     return this.users[index];
   }
 
-  createUser(username: string) {
-    this.users.push(username);
-    return 'Kullanıcı oluşturuldu';
+  createUser(createUserDto: CreateUserDto) {
+    this.users.push(createUserDto);
+    return `${createUserDto.username} kullanıcı oluşturuldu`;
   }
 
-  updateUser(index: string, username: string) {
-    this.users[index] = username;
+  updateUser(index: string, updateUserDto: UpdateUserDto) {
+    this.users[index] = updateUserDto;
     return 'Kullanıcı güncellendi';
   }
 
